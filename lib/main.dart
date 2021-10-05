@@ -24,6 +24,14 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   int leftbutton = 1;
   int rightbutton = 1;
+
+  void changeDiceFace() {
+    setState(() {
+      rightbutton = Random().nextInt(6) + 1;
+      leftbutton = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -33,10 +41,7 @@ class _DicePageState extends State<DicePage> {
             // ignore: deprecated_member_use
             child: FlatButton(
               onPressed: () {
-                setState(() {
-                  leftbutton = Random().nextInt(6) + 1;
-                  rightbutton = Random().nextInt(6) + 1;
-                });
+                changeDiceFace();
               },
               child: Image.asset('images/dice$leftbutton.png'),
             ),
@@ -45,10 +50,7 @@ class _DicePageState extends State<DicePage> {
             // ignore: deprecated_member_use
             child: FlatButton(
               onPressed: () {
-                setState(() {
-                  rightbutton = Random().nextInt(6) + 1;
-                  leftbutton = Random().nextInt(6) + 1;
-                });
+                changeDiceFace();
               },
               child: Image.asset('images/dice$rightbutton.png'),
             ),
